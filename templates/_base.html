@@ -1,5 +1,5 @@
 {% load static %}
-{% block body %}
+{% load compress %}
 
 <!DOCTYPE html>
 <html lang="en">
@@ -13,19 +13,21 @@
     {% else %}
     <title>Project Accounting</title>
     {% endif %}
+
+    {% compress css %}
+    <link rel="stylesheet" href="{% static 'src/output.css' %}">
+    {% endcompress %}
 </head>
 
 <body>
-
-    <body>
-        {% if messages %}
-        {% for message in messages %}
-        <div class="alert alert-{{ message.tags }}">
-            {{ message }}
-        </div>
-        {% endfor %}
-        {% endif %}
-        {% block content %}{% endblock %}
-    </body>
+    {% if messages %}
+    {% for message in messages %}
+    <div class="alert alert-{{ message.tags }}">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% block content %}{% endblock %}
+</body>
 
 </html>
