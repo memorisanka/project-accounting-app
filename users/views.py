@@ -6,7 +6,7 @@ from django.contrib import messages
 
 
 def home(request):
-    return render(request, "users/home.html", {"title": "Welcome"})
+    return render(request, "home.html", {"title": "Welcome"})
 
 
 def register(request):
@@ -21,4 +21,4 @@ def register(request):
     else:
         form = UserRegisterForm()
 
-    return render(request, "users/register.html", {"form": form})
+    return render(request, "/users/register.html", {"form": form})
