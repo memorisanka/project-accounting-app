@@ -3,10 +3,10 @@ from .forms import UserRegisterForm
 from django.contrib import messages
 
 # from django.core.mail import send_mail
-
-
-def home(request):
-    return render(request, "home.html", {"title": "Welcome"})
+#
+#
+# def home(request):
+#     return render(request, "home.html", {"title": "Welcome"})
 
 
 def register(request):
@@ -21,4 +21,4 @@ def register(request):
     else:
         form = UserRegisterForm()
 
-    return render(request, "/users/register.html", {"form": form})
+    return render(request, "register.html", {"form": form})
