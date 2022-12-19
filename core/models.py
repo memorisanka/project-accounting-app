@@ -34,7 +34,7 @@ class Service(models.Model):
 
 class SteelType(models.Model):
     class Meta:
-        ordering = ("name",)
+        ordering = ("steel_type",)
 
     steel_type = models.IntegerField(max_length=10, unique=True)
 
@@ -44,7 +44,7 @@ class SteelType(models.Model):
 
 class Product(models.Model):
     class Meta:
-        ordering = ("steel_type",)
+        ordering = ("name",)
 
     name = models.CharField(max_length=100, unique=True)
     unit = models.ForeignKey(Unit, max_length=10, on_delete=models.CASCADE)
