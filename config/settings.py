@@ -42,7 +42,7 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_forms",
     "django_extensions",
-    #"compressor",
+    "compressor",
     "core",
 
 ]
@@ -143,11 +143,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-# COMPRESS_ROOT = BASE_DIR / "static"
+COMPRESS_ROOT = BASE_DIR / "static"
 
-# COMPRESS_ENABLED = True
+COMPRESS_ENABLED = True
 
-# STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
 
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 
