@@ -1,15 +1,6 @@
 from django.db import models
 
 
-class Unit(models.Model):
-    class Meta:
-        ordering = ("name",)
-
-    name = models.CharField(max_length=10, unique=True)
-
-    def __str__(self):
-        return f"{self.name}"
-
 
 class Worker(models.Model):
     class Meta:
@@ -32,14 +23,15 @@ class Service(models.Model):
         return f"{self.name}"
 
 
-class SteelType(models.Model):
-    class Meta:
-        ordering = ("steel_type",)
+class SteelType(models.TextChoices):
+    STEEL_1 = '304', '304'
+    STEEL_2 = '316', '316'
+    STEEL_3 = '321', '321'
 
-    steel_type = models.IntegerField(max_length=10, unique=True)
-
-    def __str__(self):
-        return f"{self.steel_type}"
+class UnitType(models.TextChoices):
+    kg = 'kg', 'kg'
+    mb = 'mb', 'mb'
+    piece = 'szt.', 'szt.'
 
 
 class Product(models.Model):
@@ -47,5 +39,6 @@ class Product(models.Model):
         ordering = ("name",)
 
     name = models.CharField(max_length=100, unique=True)
-    unit = models.ForeignKey(Unit, max_length=10, on_delete=models.CASCADE)
-    steel_type = models.ForeignKey(SteelType, max_length=10, on_delete=models.CASCADE)
+    unit = models.CharField(max_length=10, choices=UnitType.choices, help_text="jednostka")
+    amount = models.FloatField(default=0, null=True)
+    steel_type = models.CharField(choices=SteelType.choices, max_length=10)
