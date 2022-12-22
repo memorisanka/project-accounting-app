@@ -1,0 +1,39 @@
+{% extends '_base.html' %}
+
+{% block breadcrumbs %}
+    <li hx-get="{% url 'home' %}" hx-target="#htmxCanvas" hx-push-url="true" class="breadcrumb-item">Dashboard</li>
+    <li class="breadcrumb-item active">Client #{{ client.id }}</li>
+{% endblock %}
+
+{% block content %}
+    <section class="w-75 mx-auto">
+        <div class="row">
+            <div class="col">
+                <h2>Create Client</h2>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <form
+                    hx-post="{% url 'create-client' %}"
+                    hx-target="#htmxCanvas"
+                    hx-push-url="true"
+                >
+                    {{ form }}
+                    <div class="col text-end m-2">
+                        <a
+                            class="btn btn-danger"
+                            hx-get="{% url 'home' %}"
+                            hx-target="#htmxCanvas"
+                            hx-push-url="true"
+                            role="button"
+                        >
+                            Cancel
+                        </a>
+                        <input type="submit" class="btn btn-success" value="Save" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+{% endblock %}
