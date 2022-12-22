@@ -45,7 +45,12 @@ INSTALLED_APPS = [
     "compressor",
     "core",
     "projects",
+    "django_htmx",
+    "django_htmx_refresh",
+]
 
+HTMX_APPS = [
+    "crm",
 ]
 
 MIDDLEWARE = [
@@ -56,6 +61,8 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "django_htmx.middleware.HtmxMiddleware",
+    "django_htmx_refresh.middleware.HtmxResponseMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -64,7 +71,7 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
-        'DIRS': [BASE_DIR / "templates"],
+        "DIRS": [BASE_DIR / "templates"],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -135,7 +142,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 STATICFILES_DIRS = [
     os.path.join(BASE_DIR, "static"),
 ]
