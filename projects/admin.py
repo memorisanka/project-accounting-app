@@ -1,7 +1,7 @@
 from django.contrib import admin
-from .models import Product
+from projects.models.product import Product
 
 
 @admin.register(Product)
 class ProductAdmin(admin.ModelAdmin):
-    list_display = ('name', 'unit', 'steel_type', 'amount')
+    list_display = ("name", "amount", "unit", "steel_type")
