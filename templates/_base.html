@@ -20,9 +20,9 @@
 </head>
 
 
-<body hx-headers='{"X-CSRFToken": "{{ csrf_token }}"}'>
+<body>
 
-<header class="site-header">
+<header>
         <nav>
             <div>
                 <div>
@@ -51,7 +51,8 @@
     </div>
     {% endfor %}
     {% endif %}
-    {% block content %}{% endblock %}
+    {% block content %}
+    {% endblock %}
 </body>
 
 </html>
