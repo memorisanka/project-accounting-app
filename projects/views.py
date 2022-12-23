@@ -36,7 +36,7 @@ class CreateClientView(CreateView):
 
     def get_success_url(self):
         messages.success(self.request, "Client created.")
-        return reverse("crm:detail-client", args=[self.object.id])
+        return reverse("detail-client", args=[self.object.id])
 
 
 class DetailClientView(DetailView):
