@@ -4,6 +4,8 @@
 <div>
     <h2>Detail Client #{{ object.id }}</h2><br>
 </div>
+<a href="{% url 'update-client' object.id %}">Update</a>
+<a href="{% url 'delete-client' object.pk %}">Delete</a>
 <div>
     <p><b>Name:</b> {{ object.name }}</p>
     <p><b>Address:</b> {{ object.address }}</p>

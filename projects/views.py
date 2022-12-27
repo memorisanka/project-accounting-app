@@ -6,9 +6,6 @@ from projects.models.client import Client
 from .forms import CreateClientForm, UpdateClientForm
 
 
-# Create your views here.
-
-
 class CreateClientView(CreateView):
     model = Client
     form_class = CreateClientForm
@@ -31,7 +28,7 @@ class UpdateClientView(UpdateView):
 
     def get_success_url(self):
         messages.success(self.request, "Client updated.")
-        return reverse("crm:detail-client", args=[self.object.id])
+        return reverse("detail-client", args=[self.object.id])
 
 
 class DeleteClientView(DeleteView):
@@ -40,4 +37,6 @@ class DeleteClientView(DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, "Client deleted.")
-        return reverse("crm:index")
+        return reverse("home")
+
+# nie usuwa klienta
