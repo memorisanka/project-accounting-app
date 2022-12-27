@@ -1,32 +1,12 @@
 from django.contrib import messages
-from django.shortcuts import render
-from django.urls import reverse, reverse_lazy
-from django.views.generic.list import ListView
+from django.urls import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.db.models import Q
 from projects.models.client import Client
 from .forms import CreateClientForm, UpdateClientForm
 
 
 # Create your views here.
-
-
-class SearchResultsView(ListView):
-    template_name = "search_results.html"
-    context_object_name = "results"
-
-    def get_queryset(self):
-        query = self.request.GET.get("q")
-        if query:
-            results = Client.objects.filter(
-                Q(name__icontains=query)
-                | Q(pk__icontains=query)
-                | Q(phone__icontains=query)
-                | Q(address__icontains=query)
-                | Q(email__icontains=query)
-            )
-            return results
 
 
 class CreateClientView(CreateView):
