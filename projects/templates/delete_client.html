@@ -4,16 +4,10 @@
 <div>
     <h2>Delete Client</h2>
 </div>
-<div>
-    <p>
-        Are you sure you want to remove <b>{{ object }}</b> from the client
-        list? It can't be undone.
-    </p>
-</div>
-<div>
-        <a href="{% url 'detail-client' object.id %}">Cancel</a>
-        <a href="{% url 'delete-client' object.id %}">Delete</a>
-    </div>
-
-
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    {{ form }}
+    <a href="{% url 'detail-client' object.id %}">Cancel</a>
+    <input type="submit" value="Delete">
+</form>
 {% endblock %}
