@@ -14,4 +14,4 @@ class Client(models.Model):
         return self.name
 
     def get_absolute_url(self):
-        return reverse('crm:detail-client', kwargs={'pk': self.pk})
+        return reverse('detail-client', kwargs={'pk': self.pk})

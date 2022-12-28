@@ -38,5 +38,3 @@ class DeleteClientView(DeleteView):
     def get_success_url(self):
         messages.success(self.request, "Client deleted.")
         return reverse("home")
-
-# nie usuwa klienta
