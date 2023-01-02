@@ -23,3 +23,5 @@ class Product(models.Model):
     )
     amount = models.FloatField(default=0, null=True)
     steel_type = models.CharField(choices=SteelType.choices, max_length=10)
+
+# TODO zrobic produkt posredni i potem właściwy z ilością

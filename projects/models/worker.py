@@ -1,6 +1,5 @@
 from django.db import models
 
-
 class Worker(models.Model):
     class Meta:
         ordering = ("surname",)
