@@ -26,6 +26,8 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
+ADMIN = os.getenv("ADMIN")
+
 
 ALLOWED_HOSTS = []
 
@@ -42,16 +44,15 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_forms",
     "django_extensions",
-    "compressor",
     "core",
+    "compressor",
     "projects",
     "django_htmx",
     "django_htmx_refresh",
 ]
 
-HTMX_APPS = [
-    "crm",
-]
+
+HTMX_APPS = []
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -143,19 +144,21 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, "static"),
-]
+
+
+if not ADMIN:
+    STATICFILES_DIRS = [
+        os.path.join(BASE_DIR, "static"),
+    ]
+    COMPRESS_ROOT = BASE_DIR / "static"
+    COMPRESS_ENABLED = True
+    STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
-COMPRESS_ROOT = BASE_DIR / "static"
-
-COMPRESS_ENABLED = True
-
-STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
 
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 

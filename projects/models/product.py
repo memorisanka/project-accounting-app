@@ -21,5 +21,10 @@ class Product(models.Model):
     unit = models.CharField(
         max_length=10, choices=UnitType.choices, help_text="jednostka"
     )
-    amount = models.FloatField(default=0, null=True)
     steel_type = models.CharField(choices=SteelType.choices, max_length=10)
+
+
+class ProductCreate(models.Model):
+    product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
+    amount = models.FloatField(default=0, max_length=10)
+    price = models.FloatField(default=0, max_length=10)
