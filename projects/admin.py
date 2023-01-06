@@ -27,10 +27,12 @@ class ProductCreateAdmin(admin.ModelAdmin):
 class ProjectAdmin(admin.ModelAdmin):
     list_display = (
         "name",
+        "date_create",
         "client",
         "get_workers",
         "get_products",
         "get_services",
+        "ended",
     )
 
 
@@ -44,7 +46,7 @@ class WorkerAdmin(admin.ModelAdmin):
 
 @admin.register(WorkerWorkingTime)
 class WorkerWorkingTimeAdmin(admin.ModelAdmin):
-    list_display = ("worker", "hours_amount", "price_per_hour")
+    list_display = ("worker", "date", "hours_amount", "price_per_hour")
 
 
 @admin.register(Client)
