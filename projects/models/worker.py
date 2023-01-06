@@ -1,3 +1,5 @@
+import datetime
+
 from django.db import models
 
 
@@ -14,5 +16,6 @@ class Worker(models.Model):
 
 class WorkerWorkingTime(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, default=None)
-    hours_amount = models.PositiveIntegerField(default=0, max_length=10)
+    date = models.DateTimeField(default=datetime.datetime.now())
+    hours_amount = models.PositiveIntegerField(default=0)
     price_per_hour = models.FloatField(default=0, max_length=10)
