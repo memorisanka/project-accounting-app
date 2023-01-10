@@ -3,7 +3,22 @@ from django.urls import reverse
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from projects.models.client import Client
-from .forms import CreateClientForm, UpdateClientForm
+from projects.models.project import Project
+from .forms import CreateClientForm, UpdateClientForm, CreateProjectForm
+
+
+class CreateProjectView(CreateView):
+    model = Project
+    form_class = CreateProjectForm
+    template_name = "create_project.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "Pomyślnie zapisano projekt.")
+        return reverse("detail-project", args=[self.object.id])
+
+class DetailProjectView(DetailView):
+    model = Project
+    template_name = "detail_project.html"
 
 
 class CreateClientView(CreateView):
@@ -12,7 +27,7 @@ class CreateClientView(CreateView):
     template_name = "create_client.html"
 
     def get_success_url(self):
-        messages.success(self.request, "Client created.")
+        messages.success(self.request, "Klient pomyślnie zapisany.")
         return reverse("detail-client", args=[self.object.id])
 
 
@@ -27,7 +42,7 @@ class UpdateClientView(UpdateView):
     template_name = "update_client.html"
 
     def get_success_url(self):
-        messages.success(self.request, "Client updated.")
+        messages.success(self.request, "Dane klienta zostały uaktualnione.")
         return reverse("detail-client", args=[self.object.id])
 
 
@@ -36,5 +51,5 @@ class DeleteClientView(DeleteView):
     template_name = "delete_client.html"
 
     def get_success_url(self):
-        messages.success(self.request, "Client deleted.")
+        messages.success(self.request, "Klient został pomyślnie usunięty.")
         return reverse("home")

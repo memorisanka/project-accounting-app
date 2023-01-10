@@ -1,0 +1,19 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div>
+    <h2>Szczegóły projektu #{{ object.name }}</h2><br>
+</div>
+<!--<a href="{% url 'update-client' object.id %}">Update</a>-->
+<!--<a href="{% url 'delete-client' object.pk %}">Delete</a>-->
+<div>
+    <p><b>Nazwa:</b> {{ object.name }}</p>
+    <p><b>Opis:</b> {{ object.description }}</p>
+    <p><b>Data utworzenia:</b> {{ object.date_create }}</p>
+    <p><b>Pracownicy:</b> {{ object.workers }}</p>
+    <p><b>Wykorzystane towary:</b> {{ object.products }}</p>
+    <p><b>Usługi:</b> {{ object.services }}</p>
+</div>
+
+
+{% endblock %}
