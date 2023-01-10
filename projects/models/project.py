@@ -26,4 +26,4 @@ class Project(models.Model):
         return ",".join([str(p) for p in self.services.all()])
 
     def __str__(self):
-        return f"{self.name}"
+        return self.name
