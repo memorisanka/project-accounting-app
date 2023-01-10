@@ -14,8 +14,11 @@ class Worker(models.Model):
         return f"{self.surname} {self.name}"
 
 
-class WorkerWorkingTime(models.Model):
+class WorkerWorkingTime(models.Model): # -> Worker
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, default=None)
     date = models.DateTimeField(default=datetime.datetime.now())
     hours_amount = models.PositiveIntegerField(default=0)
     price_per_hour = models.FloatField(default=0, max_length=10)
+
+    def __str__(self):
+        return f"{self.worker}"
