@@ -32,7 +32,7 @@ class ProjectAdmin(admin.ModelAdmin):
         "get_workers",
         "get_products",
         "get_services",
-        "ended",
+        "finished",
     )
 
 

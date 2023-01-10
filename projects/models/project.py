@@ -7,13 +7,13 @@ from .service import ServiceCreate
 
 
 class Project(models.Model):
-    name = models.CharField(max_length=50, unique=True)
+    name = models.CharField(max_length=50, unique=True, blank=True)
     date_create = models.DateTimeField(default=datetime.datetime.now(), blank=False)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, default=None)
-    workers = models.ManyToManyField(WorkerWorkingTime, related_name='projects')
-    products = models.ManyToManyField(ProductCreate, related_name='projects')
-    services = models.ManyToManyField(ServiceCreate, related_name='projects')
-    ended = models.BooleanField(default=False)
+    workers = models.ManyToManyField(WorkerWorkingTime, related_name='projects', blank=True)
+    products = models.ManyToManyField(ProductCreate, related_name='projects', blank=True)
+    services = models.ManyToManyField(ServiceCreate, related_name='projects', blank=True)
+    finished = models.BooleanField(default=False)
 
     def get_workers(self):
         return ",".join([str(p) for p in self.workers.all()])
@@ -23,3 +23,6 @@ class Project(models.Model):
 
     def get_services(self):
         return ",".join([str(p) for p in self.services.all()])
+
+    def __str__(self):
+        return f"{self.name}"

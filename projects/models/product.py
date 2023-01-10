@@ -31,3 +31,6 @@ class ProductCreate(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
     amount = models.FloatField(default=0, max_length=10)
     price = models.FloatField(default=0, max_length=10)
+
+    def __str__(self):
+        return f"{self.product}"
