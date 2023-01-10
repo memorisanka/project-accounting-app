@@ -8,6 +8,7 @@ from .service import ServiceCreate
 
 class Project(models.Model):
     name = models.CharField(max_length=50, unique=True, blank=True)
+    description = models.CharField(max_length=2000, blank=True)
     date_create = models.DateTimeField(default=datetime.datetime.now(), blank=False)
     client = models.ForeignKey(Client, on_delete=models.CASCADE, default=None)
     workers = models.ManyToManyField(WorkerWorkingTime, related_name='projects', blank=True)
