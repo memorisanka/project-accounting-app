@@ -10,8 +10,8 @@
             <ul class="flex flex-col mt-4 rounded-lg md:flex-row md:space-x-4 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent">
                 {% if user.is_authenticated %}
                 <li>
-                    <a href="{% url 'profile' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white"
-                        >Profil</a>
+                    <a href="{% url 'projects_list' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white"
+                        >Lista projektów</a>
                 </li>
                 <li>
                     <a href="{% url 'logout' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-red-500 md:text-white "
