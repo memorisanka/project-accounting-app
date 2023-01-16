@@ -4,8 +4,8 @@
 <div>
     <h2>Szczegóły projektu #{{ object.name }}</h2><br>
 </div>
-<!--<a href="{% url 'update-client' object.id %}">Update</a>-->
-<!--<a href="{% url 'delete-client' object.pk %}">Delete</a>-->
+<!--<a href="{% url 'update-client' object.pk %}">Update</a>-->
+<a href="{% url 'delete-project' object.pk %}">Delete</a>
 <div>
     <p><b>Nazwa:</b> {{ object.name }}</p>
     <p><b>Opis:</b> {{ object.description }}</p>

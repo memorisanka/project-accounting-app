@@ -8,6 +8,11 @@ from projects.models.project import Project
 from .forms import CreateClientForm, UpdateClientForm, CreateProjectForm
 
 
+class ProjectListView(ListView):
+    model = Project
+    paginate_by = 12
+    ordering = "name"
+
 class CreateProjectView(CreateView):
     model = Project
     form_class = CreateProjectForm
@@ -21,6 +26,14 @@ class DetailProjectView(DetailView):
     model = Project
     template_name = "detail_project.html"
 
+
+class DeleteProjectView(DeleteView):
+    model = Project
+    template_name = "delete_project.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "Projekt został pomyślnie usunięty.")
+        return reverse("projects-list")
 
 class CreateClientView(CreateView):
     model = Client
@@ -53,10 +66,7 @@ class DeleteClientView(DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, "Klient został pomyślnie usunięty.")
-        return reverse("home")
+        return reverse("detail-client")
 
 
-class ProjectListView(ListView):
-    model = Project
-    paginate_by = 50
-    ordering = "name"
+

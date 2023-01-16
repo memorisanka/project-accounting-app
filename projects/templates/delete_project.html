@@ -1,0 +1,13 @@
+{% extends '_base.html' %}
+
+{% block content %}
+<div>
+    <h2>Delete Project</h2>
+</div>
+<form method="post">{% csrf_token %}
+    <p>Are you sure you want to delete "{{ object }}"?</p>
+    {{ form }}
+    <a href="{% url 'detail-project' object.id %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white">Cancel</a>
+    <input type="submit" value="Delete" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-red-500 md:text-white">
+</form>
+{% endblock %}
