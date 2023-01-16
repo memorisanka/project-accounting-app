@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
 from django.contrib import messages
+from django.shortcuts import render, redirect
+
+from .forms import UserRegisterForm
+
 
 # from django.core.mail import send_mail
-
-
 
 
 def register(request):
@@ -20,6 +20,3 @@ def register(request):
         form = UserRegisterForm()
 
     return render(request, "register.html", {"form": form})
-
-
-

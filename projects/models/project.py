@@ -1,9 +1,11 @@
 import datetime
+
 from django.db import models
+
 from .client import Client
-from .worker import WorkerWorkingTime
 from .product import ProductCreate
 from .service import ServiceCreate
+from .worker import WorkerWorkingTime
 
 
 class Project(models.Model):
