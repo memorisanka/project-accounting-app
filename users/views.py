@@ -1,10 +1,10 @@
-from django.shortcuts import render, redirect
-from .forms import UserRegisterForm
 from django.contrib import messages
+from django.shortcuts import render, redirect
+
+from .forms import UserRegisterForm
+
 
 # from django.core.mail import send_mail
-
-
 
 
 def register(request):
@@ -15,11 +15,8 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account has been created. Welcome, {username}!")
             # send_mail()
-            return redirect("profile")
+            return redirect("projects_list")
     else:
         form = UserRegisterForm()
 
     return render(request, "register.html", {"form": form})
-
-
-

@@ -1,11 +1,18 @@
 from django.contrib import messages
 from django.urls import reverse
+from django.views.generic import ListView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from django.views.generic import ListView
+
 from projects.models.client import Client
 from projects.models.project import Project
-from .forms import CreateClientForm, UpdateClientForm, CreateProjectForm
+from .forms import CreateClientForm, UpdateClientForm, CreateProjectForm, UpdateProjectForm
+
+
+class ProjectListView(ListView):
+    model = Project
+    paginate_by = 12
+    ordering = "name"
 
 
 class CreateProjectView(CreateView):
@@ -17,9 +24,19 @@ class CreateProjectView(CreateView):
         messages.success(self.request, "Pomyślnie zapisano projekt.")
         return reverse("detail-project", args=[self.object.id])
 
+
 class DetailProjectView(DetailView):
     model = Project
     template_name = "detail_project.html"
+
+
+class DeleteProjectView(DeleteView):
+    model = Project
+    template_name = "delete_project.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "Projekt został pomyślnie usunięty.")
+        return reverse("projects-list")
 
 
 class CreateClientView(CreateView):
@@ -35,6 +52,16 @@ class CreateClientView(CreateView):
 class DetailClientView(DetailView):
     model = Client
     template_name = "detail_client.html"
+
+
+class UpdateProjectView(UpdateView):
+    model = Project
+    form_class = UpdateProjectForm
+    template_name = "update_project.html"
+
+    def get_success_url(self):
+        messages.success(self.request, "Dane klienta zostały uaktualnione.")
+        return reverse("detail-client", args=[self.object.id])
 
 
 class UpdateClientView(UpdateView):
@@ -53,10 +80,4 @@ class DeleteClientView(DeleteView):
 
     def get_success_url(self):
         messages.success(self.request, "Klient został pomyślnie usunięty.")
-        return reverse("home")
-
-
-class ProjectListView(ListView):
-    model = Project
-    paginate_by = 50
-    ordering = "name"
+        return reverse("detail-client")

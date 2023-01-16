@@ -5,16 +5,17 @@
 <h1>Lista projektów</h1>
 <br>
 <ul>
-{% for project in object_list %}
-    <li>Nazwa projektu: {{ project.name }} </li>
-    <li>Data utworzenia: {{ project.date_create | date }} </li>
+    {% for project in object_list %}
+    <li>Nazwa projektu: {{ project.name }}</li>
+    <li>Klient: {{project.client.name }}</li>
+    <li>Data utworzenia: {{ project.date_create | date }}</li>
     <li>Zakończony: {{ project.finished }}</li>
+    <li><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></li>
     <br>
-{% empty %}
+    {% empty %}
     <li>Nie ma jeszcze żadnych projektów.</li>
-{% endfor %}
+    {% endfor %}
 </ul>
-
 
 
 {% endblock %}

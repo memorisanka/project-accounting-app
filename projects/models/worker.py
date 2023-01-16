@@ -14,7 +14,7 @@ class Worker(models.Model):
         return f"{self.surname} {self.name}"
 
 
-class WorkerWorkingTime(models.Model): # -> Worker
+class WorkerWorkingTime(models.Model):  # -> Worker
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, default=None)
     date = models.DateTimeField(default=datetime.datetime.now())
     hours_amount = models.PositiveIntegerField(default=0)
