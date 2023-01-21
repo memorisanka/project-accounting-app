@@ -24,6 +24,5 @@
 <li>Django</li>
 <li>HTML</li>
 <li>CSS</li>
-<li>Tailwind CSS</li>
 <li>Unittest</li>
 </ul>
