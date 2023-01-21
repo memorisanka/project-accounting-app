@@ -20,6 +20,7 @@ class ProductCreateAdmin(admin.ModelAdmin):
         "product",
         "amount",
         "price",
+        "project",
     )
 
 
@@ -29,9 +30,6 @@ class ProjectAdmin(admin.ModelAdmin):
         "name",
         "date_create",
         "client",
-        "get_workers",
-        "get_products",
-        "get_services",
         "finished",
     )
 
@@ -46,7 +44,7 @@ class WorkerAdmin(admin.ModelAdmin):
 
 @admin.register(WorkerWorkingTime)
 class WorkerWorkingTimeAdmin(admin.ModelAdmin):
-    list_display = ("worker", "date", "hours_amount", "price_per_hour")
+    list_display = ("worker", "date", "hours_amount", "price_per_hour", "project")
 
 
 @admin.register(Client)
@@ -67,4 +65,4 @@ class ServiceAdmin(admin.ModelAdmin):
 
 @admin.register(ServiceCreate)
 class ServiceCreateAdmin(admin.ModelAdmin):
-    list_display = ("service", "amount", "price")
+    list_display = ("service", "amount", "price", "project")

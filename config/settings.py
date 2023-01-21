@@ -43,14 +43,8 @@ INSTALLED_APPS = [
     "crispy_forms",
     "django_extensions",
     "core",
-    "compressor",
     "projects",
-    "django_htmx",
-    "django_htmx_refresh",
 ]
-
-
-HTMX_APPS = []
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -60,8 +54,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_htmx.middleware.HtmxMiddleware",
-    "django_htmx_refresh.middleware.HtmxResponseMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -144,13 +136,11 @@ USE_TZ = True
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
-if os.getenv("ADMIN") == 'False':
-    COMPRESS_ENABLED = True
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-    ]
-    COMPRESS_ROOT = BASE_DIR / "static"
-    STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+CRISPY_TEMPLATE_PACK = 'uni_form'
+
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
 
 
 # Default primary key field type

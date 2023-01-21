@@ -14,7 +14,7 @@
 </details>
 
 ## Setup
-<details><summary> How to run program</summary>
+<details><summary>How to run program</summary>
 
 </details>
 

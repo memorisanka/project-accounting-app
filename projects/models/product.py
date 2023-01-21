@@ -1,5 +1,7 @@
 from django.db import models
 
+from projects.models.project import Project
+
 
 class SteelType(models.TextChoices):
     STEEL_1 = "304", "304"
@@ -31,6 +33,7 @@ class ProductCreate(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
     amount = models.FloatField(default=0, max_length=10)
     price = models.FloatField(default=0, max_length=10)
+    project = models.ForeignKey(Project, on_delete=models.CASCADE)
 
     def __str__(self):
         return f"{self.product}"
