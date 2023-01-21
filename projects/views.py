@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 
 from projects.models.client import Client
 from projects.models.project import Project
@@ -14,6 +14,26 @@ class ProjectListView(ListView):
     paginate_by = 12
     ordering = "name"
 
+class CRUDView(View):
+    model = None
+    form_class = None
+    template_name = None
+    success_message = None
+    success_url = None
+
+    def get_success_url(self):
+        messages.success(self.request, self.success_message)
+        return self.success_url
+
+class OwnCreateView(CRUDView, CreateView):
+    pass
+
+# class CreateProjectView(OwnCreateView):
+#     model = Project
+#     form_class = CreateProjectForm
+#     template_name = "create_project.html"
+#     success_message = 'Project successfully saved.'
+#     success_url = reverse('detail-project', args=[self.object.id])
 
 class CreateProjectView(CreateView):
     model = Project

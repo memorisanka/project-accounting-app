@@ -8,11 +8,11 @@ class CreateProjectForm(forms.ModelForm):
     class Meta:
         model = Project
         fields = "__all__"
-        widgets = {
-            "name": forms.TextInput(attrs={"class": "form-control"}),
-            "description": forms.TextInput(attrs={"class": "form-control"}),
-            "date_create": forms.DateInput(attrs={"class": "form-control"}),
-        }
+        # widgets = {
+        #     "name": forms.TextInput(attrs={"class": "form-control"}),
+        #     "description": forms.TextInput(attrs={"class": "form-control"}),
+        #     "date_create": forms.DateInput(attrs={"class": "form-control"}),
+        # }
 
 
 class UpdateProjectForm(forms.ModelForm):
