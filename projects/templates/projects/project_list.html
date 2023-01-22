@@ -10,7 +10,7 @@
     <li>Klient: {{project.client.name }}</li>
     <li>Data utworzenia: {{ project.date_create | date }}</li>
     <li>Zakończony: {{ project.finished }}</li>
-    <li><a href="{% url 'detail-project' object.pk %}">Szczegóły projektu</a></li>
+    <li><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></li>
     <br>
     {% empty %}
     <li>Nie ma jeszcze żadnych projektów.</li>

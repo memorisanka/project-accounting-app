@@ -8,6 +8,7 @@
 <a href="{% url 'delete-project' object.pk %}">Delete</a>
 <div>
     <p><b>Nazwa:</b> {{ object.name }}</p>
+    <p><b>Klient:</b> <a href="{% url 'detail-client' object.pk %}">{{ object.client}}</a></p>
     <p><b>Opis:</b> {{ object.description }}</p>
     <p><b>Data utworzenia:</b> {{ object.date_create }}</p>
     <p><b>Pracownicy:</b> {{ object.workers }}</p>
