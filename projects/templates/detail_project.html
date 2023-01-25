@@ -11,9 +11,11 @@
     <p><b>Klient:</b> <a href="{% url 'detail-client' object.pk %}">{{ object.client}}</a></p>
     <p><b>Opis:</b> {{ object.description }}</p>
     <p><b>Data utworzenia:</b> {{ object.date_create }}</p>
-    <p><b>Pracownicy:</b> {{ object.workers }}</p>
-    <p><b>Wykorzystane towary:</b> {{ object.products }}</p>
-    <p><b>Usługi:</b> {{ object.services }}</p>
+    <p>Pracownicy </p>
+    {% for obj in workers %}
+        <p> {{ obj.name }}, {{ obj.surname }}</p>
+    {% endfor %}
+
 </div>
 
 

@@ -1,6 +1,6 @@
 from django.db import models
 
-from projects.models.project import Project
+from projects.models import Project
 
 
 class Service(models.Model):
