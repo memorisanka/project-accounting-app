@@ -1,22 +1,25 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h2>Szczegóły projektu #{{ object.name }}</h2><br>
-</div>
-<a href="{% url 'update-project' object.pk %}">Update</a>
-<a href="{% url 'delete-project' object.pk %}">Delete</a>
-<div>
-    <p><b>Nazwa:</b> {{ object.name }}</p>
-    <p><b>Klient:</b> <a href="{% url 'detail-client' object.pk %}">{{ object.client}}</a></p>
-    <p><b>Opis:</b> {{ object.description }}</p>
-    <p><b>Data utworzenia:</b> {{ object.date_create }}</p>
-    <p>Pracownicy </p>
-    {% for obj in workers %}
-        <p> {{ obj.name }}, {{ obj.surname }}</p>
-    {% endfor %}
+    <div>
+        <h2>Szczegóły projektu #{{ object.name }}</h2><br>
+    </div>
+    <a href="{% url 'update-project' object.pk %}">Update</a>
+    <a href="{% url 'delete-project' object.pk %}">Delete</a>
+    <div>
+        <p><b>Nazwa:</b> {{ object.name }}</p>
+        <p><b>Klient:</b> <a href="{% url 'detail-client' object.pk %}">{{ object.client }}</a></p>
+        <p><b>Opis:</b> {{ object.description }}</p>
+        <p><b>Data utworzenia:</b> {{ object.date_create }}</p>
+        <p>Pracownicy: </p>
+        {% for worker_for_project in object.get_workers %}
+            <p> {{ worker_for_project.worker.name }}, {{ worker_for_project.worker.surname }}</p>
+        {% endfor %}
+        {% with summary=object.get_workers_summary %}
+            <p>Łączna ilość godzin: {{ summary.total_hours }}</p>
+            <p>Łączny koszt: {{ summary.total_price }}</p>{% endwith %}
 
-</div>
+    </div>
 
 
 {% endblock %}

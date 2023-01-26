@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Worker, WorkerWorkingTime
+from .models import Worker, WorkerForProject
 
 
 @admin.register(Worker)
@@ -11,6 +11,6 @@ class WorkerAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(WorkerWorkingTime)
-class WorkerWorkingTimeAdmin(admin.ModelAdmin):
+@admin.register(WorkerForProject)
+class WorkerForProjectAdmin(admin.ModelAdmin):
     list_display = ("worker", "date", "hours_amount", "price_per_hour", "project")

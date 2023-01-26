@@ -1,4 +1,7 @@
 import datetime
+
+from django.db.models import Sum
+
 from clients.models import Client
 from django.db import models
 
@@ -12,3 +15,11 @@ class Project(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_workers(self):
+        return self.workers.all()
+
+    def get_workers_summary(self):
+        queryset = self.get_workers()
+        return queryset.aggregate(total_hours=Sum("hours_amount"),
+                                  total_price=Sum("price_per_hour"))

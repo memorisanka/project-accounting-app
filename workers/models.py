@@ -16,10 +16,10 @@ class Worker(models.Model):
         return f"{self.surname} {self.name}"
 
 
-class WorkerWorkingTime(models.Model):  # -> Worker
+class WorkerForProject(models.Model):
     worker = models.ForeignKey(Worker, on_delete=models.CASCADE, default=None)
-    project = models.ForeignKey(Project, on_delete=models.CASCADE)
-    date = models.DateTimeField(default=datetime.datetime.now())
+    project = models.ForeignKey(Project, on_delete=models.CASCADE, related_name="workers")
+    date = models.DateField(default=datetime.date.today)
     hours_amount = models.PositiveIntegerField(default=0)
     price_per_hour = models.FloatField(default=0, max_length=10)
 

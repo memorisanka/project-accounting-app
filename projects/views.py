@@ -7,7 +7,7 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
 
 from projects.models import Project
 from workers.models import Worker
-from .forms import CreateProjectForm, UpdateProjectForm
+from .forms import ProjectForm, ProjectForm
 
 
 class HomeView(TemplateView):
@@ -50,7 +50,7 @@ class BaseProjectView:
 
 class CreateProjectView(BaseProjectView, CreateView):
     model = Project
-    form_class = CreateProjectForm
+    form_class = ProjectForm
     template_name = "create_project.html"
 
     def get_success_url(self):
@@ -62,15 +62,15 @@ class DetailProjectView(DetailView):
     model = Project
     template_name = "detail_project.html"
 
-    def get_context_data(self, **kwargs):
-        data = super().get_context_data(**kwargs)
-        data['workers'] = Worker.objects.all()
-        return data
+    # def get_context_data(self, **kwargs):
+    #     data = super().get_context_data(**kwargs)
+    #     data['workers'] = Worker.objects.all()
+    #     return data
 
 
 class UpdateProjectView(UpdateView):
     model = Project
-    form_class = UpdateProjectForm
+    form_class = ProjectForm
     template_name = "update_project.html"
 
     def get_success_url(self):

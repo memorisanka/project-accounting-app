@@ -29,7 +29,7 @@ class Product(models.Model):
         return f"{self.name} {self.steel_type}"
 
 
-class ProductCreate(models.Model):
+class ProductForProject(models.Model):
     product = models.ForeignKey(Product, on_delete=models.CASCADE, default=None)
     amount = models.FloatField(default=0, max_length=10)
     price = models.FloatField(default=0, max_length=10)

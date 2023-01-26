@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import Product, ProductCreate
+from .models import Product, ProductForProject
 
 
 @admin.register(Product)
@@ -12,8 +12,8 @@ class ProductAdmin(admin.ModelAdmin):
     )
 
 
-@admin.register(ProductCreate)
-class ProductCreateAdmin(admin.ModelAdmin):
+@admin.register(ProductForProject)
+class ProductForProjectAdmin(admin.ModelAdmin):
     list_display = (
         "product",
         "amount",
