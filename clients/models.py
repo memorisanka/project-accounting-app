@@ -3,11 +3,11 @@ from django.urls import reverse
 
 
 class Client(models.Model):
-    name = models.CharField(max_length=240)
-    address = models.CharField(max_length=300)
-    contact_person = models.CharField(max_length=50)
-    phone = models.CharField(max_length=14)
-    email = models.EmailField(max_length=240)
+    name = models.CharField(max_length=240, verbose_name='Nazwa kontrahenta')
+    address = models.CharField(max_length=300, verbose_name='Adres')
+    contact_person = models.CharField(max_length=50, verbose_name='Osoba do kontaktu')
+    phone = models.CharField(max_length=14, verbose_name="Numer telefonu")
+    email = models.EmailField(max_length=240, verbose_name='E-mail')
     date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):

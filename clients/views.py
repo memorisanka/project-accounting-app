@@ -1,10 +1,14 @@
 from django.contrib import messages
 from django.urls import reverse
-from django.views.generic import CreateView, UpdateView, DetailView, DeleteView
+from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 
 from .forms import CreateClientForm, UpdateClientForm
 from .models import Client
 
+class ClientListView(ListView):
+    model = Client
+    paginate_by = 12
+    ordering = "name"
 
 class CreateClientView(CreateView):
     model = Client

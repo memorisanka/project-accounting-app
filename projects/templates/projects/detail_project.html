@@ -16,8 +16,8 @@
             <p> {{ worker_for_project.worker.name }}, {{ worker_for_project.worker.surname }}</p>
         {% endfor %}
         {% with summary=object.get_workers_summary %}
-            <p>Łączna ilość godzin: {{ summary.total_hours }}</p>
-            <p>Łączny koszt: {{ summary.total_price }}</p>{% endwith %}
+            <p>Łączna ilość godzin przepracowanych dla projektu: {{ summary.total_hours }}</p>
+            <p>Łączny koszt: {{ summary.total_price }} zł</p>{% endwith %}
 
     </div>
 
