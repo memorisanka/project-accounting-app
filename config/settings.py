@@ -65,7 +65,13 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [os.path.join(BASE_DIR, "projects/templates/projects"),
+                 os.path.join(BASE_DIR, "clients/templates/clients"),
+                 os.path.join(BASE_DIR, "workers/templates/workers"),
+                 os.path.join(BASE_DIR, "products/templates/products"),
+                 os.path.join(BASE_DIR, "services/templates/services"),
+                 os.path.join(BASE_DIR, "templates"),
+                 os.path.join(BASE_DIR, "users/templates/users")],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
