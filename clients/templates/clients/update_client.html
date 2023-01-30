@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Update Client #{{ object.id }}</h2>
+
+<form method="POST" class="my-10">
+    {% csrf_token %}
+    <fieldset>
+        {{ form.as_p }}
+    </fieldset>
+    <div>
+        <a href="{% url 'detail-client' object.id %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white">Anuluj</a>
+        <input type="submit" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-blue-500 md:text-white" value="Zapisz" />
+    </div>
+</form>
+{% endblock %}

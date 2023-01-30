@@ -26,8 +26,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.getenv("DEBUG")
-ADMIN = os.getenv("ADMIN")
-
 
 ALLOWED_HOSTS = []
 
@@ -44,15 +42,12 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "crispy_forms",
     "django_extensions",
-    "core",
-    "compressor",
     "projects",
-    "django_htmx",
-    "django_htmx_refresh",
+    "workers",
+    "products",
+    "services",
+    "clients",
 ]
-
-
-HTMX_APPS = []
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
@@ -62,8 +57,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    "django_htmx.middleware.HtmxMiddleware",
-    "django_htmx_refresh.middleware.HtmxResponseMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -72,7 +65,13 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
-        "DIRS": [BASE_DIR / "templates"],
+        "DIRS": [os.path.join(BASE_DIR, "projects/templates/projects"),
+                 os.path.join(BASE_DIR, "clients/templates/clients"),
+                 os.path.join(BASE_DIR, "workers/templates/workers"),
+                 os.path.join(BASE_DIR, "products/templates/products"),
+                 os.path.join(BASE_DIR, "services/templates/services"),
+                 os.path.join(BASE_DIR, "templates"),
+                 os.path.join(BASE_DIR, "users/templates/users")],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -142,17 +141,16 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
+
 STATIC_URL = "static/"
 STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
+CRISPY_TEMPLATE_PACK = 'uni_form'
 
-if not ADMIN:
-    STATICFILES_DIRS = [
-        os.path.join(BASE_DIR, "static"),
-    ]
-    COMPRESS_ROOT = BASE_DIR / "static"
-    COMPRESS_ENABLED = True
-    STATICFILES_FINDERS = ("compressor.finders.CompressorFinder",)
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, "static"),
+# ]
+
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.1/ref/settings/#default-auto-field

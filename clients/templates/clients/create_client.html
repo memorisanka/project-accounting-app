@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <section>
+        <div>
+            <div>
+                <h2>Create Client</h2>
+            </div>
+        </div>
+        <div class="my-6">
+           <form method="POST">
+                {% csrf_token %}
+                 <fieldset>
+                    {{ form.as_p }}
+                </fieldset>
+                <button type="submit" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-blue-500 md:text-white">Save</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}
