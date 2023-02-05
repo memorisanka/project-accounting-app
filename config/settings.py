@@ -47,6 +47,7 @@ INSTALLED_APPS = [
     "products",
     "services",
     "clients",
+    "bootstrap5",
 ]
 
 MIDDLEWARE = [

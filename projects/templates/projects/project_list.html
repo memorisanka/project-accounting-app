@@ -4,21 +4,22 @@
 
     <h1>Lista projektów</h1>
     <br>
-    <ul>
+    <div>
         {% for project in object_list %}
-            <li>Nazwa projektu: {{ project.name }}</li>
-            <li>Klient: {{ project.client.name }}</li>
-            <li>Data utworzenia: {{ project.date_create | date }}</li>
-            <li>Zakończony: {{ project.finished }}</li>
-            <li><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></li>
+            <p>Nazwa projektu: {{ project.name }}</p>
+            <p>Klient: {{ project.client.name }}</p>
+            <p>Data utworzenia: {{ project.date_create | date }}</p>
+            <p>
+                Zakończony: {{ project.finished }}</p>
+            <p><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></p>
             <br>
         {% empty %}
-            <li>Nie ma jeszcze żadnych projektów.</li>
+            Nie ma jeszcze żadnych projektów.
         {% endfor %}
         <a href="{% url 'create-project' %}"
            class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white"
-        >Utwórz projekt</a>
-    </ul>
+        >Utwórz nowy projekt</a>
+    </div>
 
 
 {% endblock %}
