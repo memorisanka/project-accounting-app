@@ -15,7 +15,7 @@ def register(request):
             username = form.cleaned_data.get("username")
             messages.success(request, f"Account has been created. Welcome, {username}!")
             # send_mail()
-            return redirect("projects_list")
+            return redirect("login")
     else:
         form = UserRegisterForm()
 
