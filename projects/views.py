@@ -1,9 +1,10 @@
 from django.contrib import messages
-from django.urls import reverse
+from django.urls import reverse, reverse_lazy
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
 from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 from projects.models import Project
 from workers.models import Worker
@@ -17,7 +18,7 @@ class HomeView(TemplateView):
 class ProjectListView(ListView):
     model = Project
     paginate_by = 12
-    ordering = "name"
+    ordering = "-date_create"
 
 
 class CRUDView(View):

@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Baza kontrahentów</h1>
+<br>
+<ul>
+    {% for client in object_list %}
+    Nazwa kontrahenta: {{ client.name }}
+    <a href="{% url 'detail-client' client.pk %}">Szczegóły</a>
+    <br>
+    {% empty %}
+    Baza klientów jest pusta.
+    {% endfor %}
+</ul>
+
+
+{% endblock %}

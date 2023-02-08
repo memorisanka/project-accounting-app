@@ -1,21 +1,35 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block content %}
 
-<h1>Lista projektów</h1>
-<br>
-<ul>
-    {% for project in object_list %}
-    <li>Nazwa projektu: {{ project.name }}</li>
-    <li>Klient: {{project.client.name }}</li>
-    <li>Data utworzenia: {{ project.date_create | date }}</li>
-    <li>Zakończony: {{ project.finished }}</li>
-    <li><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></li>
     <br>
-    {% empty %}
-    <li>Nie ma jeszcze żadnych projektów.</li>
-    {% endfor %}
-</ul>
+    <div>
+
+        <table>
+            <tr>
+                <th>Nazwa projektu</th>
+                <th>Klient</th>
+                <th>Data utworzenia</th>
+                <th>Zakończony</th>
+            </tr>
+            {% for project in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail-project' project.pk %}">{{ project.name }}</a></td>
+                    <td>{{ project.client.name }}</td>
+                    <td>{{ project.date_create | date }}</td>
+                    <td>{% if project.finished == False %} NIE
+                    {% else %} TAK
+                    {% endif %}</td>
+                </tr>
+            {% empty %}
+                Nie ma jeszcze żadnych projektów.
+            {% endfor %}
+        </table>
+        <br>
+
+        <a href="{% url 'create-project' %}"
+        >Utwórz nowy projekt</a>
+    </div>
 
 
 {% endblock %}

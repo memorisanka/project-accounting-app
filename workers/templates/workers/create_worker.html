@@ -1,14 +1,14 @@
 {% extends 'base.html' %}
-{% load crispy_forms_tags %}
+
 
 {% block content %}
     <section>
         <div>
             <div>
-                <h2>Stwórz projekt</h2>
+                <h2>Utwórz pracownika</h2>
             </div>
         </div>
-        <div>
+        <div class="my-6">
            <form method="POST">
                 {% csrf_token %}
                  <fieldset>

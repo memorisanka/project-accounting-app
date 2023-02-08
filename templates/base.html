@@ -1,56 +1,46 @@
 {% load static %}
 
+<!DOCTYPE html>
 <html lang="en">
 
-
 <head>
+    {% load bootstrap5 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript %}
     {% if title %}
-    <title>{{ title }}</title>
+        <title>{{ title }}</title>
     {% else %}
-    <title>Project Accounting</title>
+        <title>Project Accounting</title>
     {% endif %}
 </head>
 
 <body>
-    <div class="container flex flex-wrap items-center justify-between p-4 ">
-        <a href="{% url 'home' %}" class="flex items-center">
-            <span class="self-center text-xl font-semibold whitespace-nowrap">Accounting App</span>
-        </a>
-
-        <div class="w-full md:block md:w-auto" id="navbar-solid-bg">
-            <ul class="flex flex-col mt-4 rounded-lg md:flex-row md:space-x-4 md:mt-0 md:text-sm md:font-medium md:border-0 md:bg-transparent">
-                {% if user.is_authenticated %}
-                <li>
-                    <a href="{% url 'projects-list' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white"
-                        >Lista projektów</a>
-                </li>
-                <li>
-                    <a href="{% url 'logout' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-red-500 md:text-white "
-                        >Wyloguj</a>
-                </li>
-                {% else %}
-                <li>
-                    <a href="{% url 'login' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-blue-500 md:text-white"
-                        >Zaloguj się</a>
-                </li>
-                <li>
-                    <a href="{% url 'register' %}" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-red-500 md:text-white "
-                        >Zarejestruj się</a>
-                </li>
-                {% endif %}
-            </ul>
-        </div>
+<div>
+    <div class="container">
+        <ul class="nav bg-info">
+            {% if user.is_authenticated %}
+                <a href="{% url 'create-project' %}">Nowy projekt</a>
+                <a href="{% url 'projects-list' %}">Baza projektów</a>
+                <a href="{% url "clients-list" %}">Kontrahenci</a>
+                <a href="{% url "workers-list" %}">Pracownicy</a>
+                <a href="{% url 'logout' %}">Wyloguj</a>
+            {% else %}
+                <a href="{% url 'login' %}">Zaloguj się</a>
+                <a href="{% url 'register' %}">Zarejestruj się</a>
+            {% endif %}
+        </ul>
     </div>
+</div>
 
-    {% if messages %}
+{% if messages %}
     {% for message in messages %}
-    <div class="alert alert-{{ message.tags }}">
-        {{ message }}
-    </div>
+        <div class="alert alert-{{ message.tags }}">
+            {{ message }}
+        </div>
     {% endfor %}
-    {% endif %}
-    {% block content %}
-    {% endblock %}
+{% endif %}
+{% block content %}
+{% endblock %}
 </body>
 
 </html>
