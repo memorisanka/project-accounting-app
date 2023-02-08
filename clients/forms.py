@@ -25,10 +25,3 @@ class UpdateClientForm(forms.ModelForm):
                 widgets[field] = forms.EmailInput(attrs=attrs)
             else:
                 widgets[field] = forms.TextInput(attrs=attrs)
-        # widgets = {
-        #     "name": forms.Textnput(attrs={"class": "form-control"}),
-        #     "address": forms.TextInput(attrs={"class": "form-control"}),
-        #     "contact_person": forms.TextInput(attrs={"class": "form-control"}),
-        #     "phone": forms.TextInput(attrs={"class": "form-control"}),
-        #     "email": forms.EmailInput(attrs={"class": "form-control"}),
-        # }

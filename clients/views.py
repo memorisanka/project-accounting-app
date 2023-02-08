@@ -5,10 +5,12 @@ from django.views.generic import CreateView, UpdateView, DetailView, DeleteView,
 from .forms import CreateClientForm, UpdateClientForm
 from .models import Client
 
+
 class ClientListView(ListView):
     model = Client
     paginate_by = 12
     ordering = "name"
+
 
 class CreateClientView(CreateView):
     model = Client
