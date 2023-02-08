@@ -18,7 +18,7 @@ class HomeView(TemplateView):
 class ProjectListView(ListView):
     model = Project
     paginate_by = 12
-    ordering = "name"
+    ordering = "-date_create"
 
 
 class CRUDView(View):

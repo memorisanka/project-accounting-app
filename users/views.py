@@ -13,7 +13,7 @@ def register(request):
         if form.is_valid():
             form.save()
             username = form.cleaned_data.get("username")
-            messages.success(request, f"Account has been created. Welcome, {username}!")
+            messages.success(request, f"Konto zostało utworzone. Teraz możesz się zalogować.")
             # send_mail()
             return redirect("login")
     else:

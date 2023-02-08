@@ -2,22 +2,32 @@
 
 {% block content %}
 
-    <h1>Lista projektów</h1>
     <br>
     <div>
-        {% for project in object_list %}
-            <p>Nazwa projektu: {{ project.name }}</p>
-            <p>Klient: {{ project.client.name }}</p>
-            <p>Data utworzenia: {{ project.date_create | date }}</p>
-            <p>
-                Zakończony: {{ project.finished }}</p>
-            <p><a href="{% url 'detail-project' project.pk %}">Szczegóły projektu</a></p>
-            <br>
-        {% empty %}
-            Nie ma jeszcze żadnych projektów.
-        {% endfor %}
+
+        <table>
+            <tr>
+                <th>Nazwa projektu</th>
+                <th>Klient</th>
+                <th>Data utworzenia</th>
+                <th>Zakończony</th>
+            </tr>
+            {% for project in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail-project' project.pk %}">{{ project.name }}</a></td>
+                    <td>{{ project.client.name }}</td>
+                    <td>{{ project.date_create | date }}</td>
+                    <td>{% if project.finished == False %} NIE
+                    {% else %} TAK
+                    {% endif %}</td>
+                </tr>
+            {% empty %}
+                Nie ma jeszcze żadnych projektów.
+            {% endfor %}
+        </table>
+        <br>
+
         <a href="{% url 'create-project' %}"
-           class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-green-500 md:text-white"
         >Utwórz nowy projekt</a>
     </div>
 
