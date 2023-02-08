@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 
 {% block content %}
     <section>
@@ -14,7 +14,7 @@
                  <fieldset>
                     {{ form.as_p }}
                 </fieldset>
-                <button type="submit" class="block py-2 pl-3 pr-4 text-white bg-indigo-700 mt-2 md:my-0 rounded md:bg-blue-500 md:text-white">Zapisz</button>
+                <button type="submit" >Zapisz</button>
             </form>
         </div>
     </section>
