@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    
+    <br>
+    <table>
+        <tr>
+            <th>Nazwisko</th>
+            <th>Imię</th>
+        </tr>
+        <tr>
+            {% for worker in object_list %}
+                <td>{{ worker.surname }}</td>
+                <td>{{ worker.name }}</td>
+                </tr>
+            {% empty %}
+                Baza jest pusta.
+            {% endfor %}
+    </table>
+
+
+{% endblock %}
