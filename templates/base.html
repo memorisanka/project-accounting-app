@@ -21,6 +21,7 @@
             {% if user.is_authenticated %}
                 <a href="{% url 'create-project' %}">Nowy projekt</a>
                 <a href="{% url 'projects-list' %}">Baza projektów</a>
+                <a href="{% url 'products-list' %}">Towary</a>
                 <a href="{% url "clients-list" %}">Kontrahenci</a>
                 <a href="{% url "workers-list" %}">Pracownicy</a>
                 <a href="{% url 'logout' %}">Wyloguj</a>
