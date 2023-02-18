@@ -12,11 +12,15 @@
             {% for worker in object_list %}
                 <td>{{ worker.surname }}</td>
                 <td>{{ worker.name }}</td>
+                <td><a href="{% url 'detail-worker' worker.pk %}">Szczegóły</a></td>
                 </tr>
             {% empty %}
                 Baza jest pusta.
             {% endfor %}
     </table>
+    <br>
+    <a href="{% url 'create-worker' %}"
+        >Dodaj pracownika</a>
 
 
 {% endblock %}

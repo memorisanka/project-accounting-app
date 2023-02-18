@@ -1,10 +1,11 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h2>Detail Worker #{{ object.id }}</h2><br>
-</div>
-
+<br>
+    </div>
+    <a href="{% url 'update-worker' object.pk %}">Update</a>
+    <a href="{% url 'delete-worker' object.pk %}">Delete</a>
+    <div>
 <div>
     <p><b>Name:</b> {{ object.name }}</p>
     <p><b>Surname:</b> {{ object.surname }}</p>
