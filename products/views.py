@@ -12,7 +12,7 @@ class ProductListView(ListView):
     ordering = "name"
 
 
-class CreateClientView(CreateView):
+class CreateProductView(CreateView):
     model = Product
     form_class = ProductForm
     template_name = "create_product.html"
@@ -22,12 +22,12 @@ class CreateClientView(CreateView):
         return reverse("detail-product", args=[self.object.id])
 
 
-class DetailClientView(DetailView):
+class DetailProductView(DetailView):
     model = Product
     template_name = "detail_product.html"
 
 
-class UpdateClientView(UpdateView):
+class UpdateProductView(UpdateView):
     model = Product
     form_class = ProductForm
     template_name = "update_product.html"
@@ -37,7 +37,7 @@ class UpdateClientView(UpdateView):
         return reverse("detail-product", args=[self.object.id])
 
 
-class DeleteClientView(DeleteView):
+class DeleteProductView(DeleteView):
     model = Product
     template_name = "delete_product.html"
 
