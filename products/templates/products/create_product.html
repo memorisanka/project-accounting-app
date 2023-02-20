@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <section>
+        <div>
+            <div>
+                <h2>Create Product</h2>
+            </div>
+        </div>
+        <div class="my-6">
+           <form method="POST">
+                {% csrf_token %}
+                 <fieldset>
+                    {{ form.as_p }}
+                </fieldset>
+                <button type="submit">Save</button>
+            </form>
+        </div>
+    </section>
+{% endblock %}

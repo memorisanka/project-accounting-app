@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1>Baza towarów</h1>
+<br>
+<ul>
+    {% for product in object_list %}
+    Nazwa towaru: {{ product.name }}
+    <a href="{% url 'detail-product' product.pk %}">Szczegóły</a>
+    <br>
+    {% empty %}
+    Baza towarów jest pusta.
+    {% endfor %}
+
+ <a href="{% url 'create-product' %}"
+        >Dodaj towar</a>
+</ul>
+
+
+{% endblock %}
