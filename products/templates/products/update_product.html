@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h2>Update Product #{{ object.id }}</h2>
+
+<form method="POST" class="my-10">
+    {% csrf_token %}
+    <fieldset>
+        {{ form.as_p }}
+    </fieldset>
+    <div>
+        <a href="{% url 'detail-product' object.id %}" >Anuluj</a>
+        <input type="submit" value="Zapisz" />
+    </div>
+</form>
+{% endblock %}
