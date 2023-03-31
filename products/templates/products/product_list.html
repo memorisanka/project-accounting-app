@@ -2,20 +2,32 @@
 
 {% block content %}
 
-<h1>Baza towarów</h1>
-<br>
-<ul>
-    {% for product in object_list %}
-    Nazwa towaru: {{ product.name }}
-    <a href="{% url 'detail-product' product.pk %}">Szczegóły</a>
+    <h1>Baza towarów</h1>
     <br>
-    {% empty %}
-    Baza towarów jest pusta.
-    {% endfor %}
+    <ul>
 
- <a href="{% url 'create-product' %}"
+        <table style="border-style: dashed">
+            <tr>
+                <th>Towar</th>
+                <th>Jednostka</th>
+                <th>Gatunek</th>
+                <th>Uwagi / opis</th>
+            </tr>
+            {% for product in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail-product' product.pk %}">{{ product.name }}</a></td>
+                    <td>{{ product.unit }}</td>
+                    <td>{{ product.steel_type }}</td>
+                    <td>{{ product.description }}</td>
+                </tr>
+            {% empty %}
+                Baza produktów jest pusta.
+            {% endfor %}
+        </table>
+        <br>
+        <a href="{% url 'create-product' %}"
         >Dodaj towar</a>
-</ul>
+    </ul>
 
 
 {% endblock %}

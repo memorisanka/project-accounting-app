@@ -24,6 +24,7 @@ class Product(models.Model):
         max_length=10, choices=UnitType.choices, help_text="jednostka", verbose_name='Jednostka'
     )
     steel_type = models.CharField(choices=SteelType.choices, max_length=10, verbose_name='Gatunek stali')
+    description = models.CharField(max_length=255, blank=True, verbose_name='Opis / uwagi')
 
     def __str__(self):
         return f"{self.name} {self.steel_type}"
