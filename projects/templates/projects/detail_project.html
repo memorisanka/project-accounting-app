@@ -2,7 +2,7 @@
 {% load crispy_forms_tags %}
 {% block content %}
     <div>
-    <br>
+        <br>
         <h2>Szczegóły projektu #{{ object.name }}</h2><br>
     </div>
     <a href="{% url 'update-project' object.pk %}">Popraw</a>
@@ -21,7 +21,7 @@
             <p>Łączny koszt: {{ summary.total_price }} zł</p>{% endwith %}
 
     </div>
-<br>
+    <br>
     <a href="{% url 'projects-list' %}">Wróć</a>
 
 {% endblock %}
