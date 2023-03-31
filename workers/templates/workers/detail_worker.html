@@ -3,13 +3,14 @@
 {% block content %}
 <br>
     </div>
-    <a href="{% url 'update-worker' object.pk %}">Update</a>
-    <a href="{% url 'delete-worker' object.pk %}">Delete</a>
+    <a href="{% url 'update-worker' object.pk %}">Popraw</a>
+    <a href="{% url 'delete-worker' object.pk %}">Usuń</a>
     <div>
 <div>
     <p><b>Name:</b> {{ object.name }}</p>
     <p><b>Surname:</b> {{ object.surname }}</p>
 </div>
 
+    <a href="{% url 'workers-list' %}">Wróć</a>
 
 {% endblock %}

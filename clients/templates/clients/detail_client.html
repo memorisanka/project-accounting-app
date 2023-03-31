@@ -1,18 +1,18 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h2>Detail Client #{{ object.id }}</h2><br>
-</div>
-<a href="{% url 'update-client' object.id %}">Update</a>
-<a href="{% url 'delete-client' object.pk %}">Delete</a>
-<div>
-    <p><b>Nazwa kontrahenta:</b> {{ object.name }}</p>
-    <p><b>Adres:</b> {{ object.address }}</p>
-    <p><b>Osoba do kontaktu:</b> {{ object.contact_person }}</p>
-    <p><b>Numer telefonu:</b> {{ object.phone }}</p>
-    <p><b>E-mail:</b> {{ object.email }}</p>
-</div>
+    <div>
+        <a href="{% url 'update-client' object.id %}">Popraw</a>
+        <a href="{% url 'delete-client' object.pk %}">Usuń</a>
+    </div>
 
+    <div>
+        <p><b>Nazwa kontrahenta:</b> {{ object.name }}</p>
+        <p><b>Adres:</b> {{ object.address }}</p>
+        <p><b>Osoba do kontaktu:</b> {{ object.contact_person }}</p>
+        <p><b>Numer telefonu:</b> {{ object.phone }}</p>
+        <p><b>E-mail:</b> {{ object.email }}</p>
+    </div>
+    <a href="{% url 'clients-list' %}">Wróć</a>
 
 {% endblock %}

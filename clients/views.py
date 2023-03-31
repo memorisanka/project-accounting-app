@@ -15,7 +15,7 @@ class ClientListView(ListView):
 class CreateClientView(CreateView):
     model = Client
     form_class = CreateClientForm
-    template_name = "create_product.html"
+    template_name = "create_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Klient pomyślnie zapisany.")
@@ -24,13 +24,13 @@ class CreateClientView(CreateView):
 
 class DetailClientView(DetailView):
     model = Client
-    template_name = "detail_product.html"
+    template_name = "detail_client.html"
 
 
 class UpdateClientView(UpdateView):
     model = Client
     form_class = UpdateClientForm
-    template_name = "update_product.html"
+    template_name = "update_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Dane klienta zostały uaktualnione.")
@@ -39,7 +39,7 @@ class UpdateClientView(UpdateView):
 
 class DeleteClientView(DeleteView):
     model = Client
-    template_name = "delete_product.html"
+    template_name = "delete_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Klient został pomyślnie usunięty.")
