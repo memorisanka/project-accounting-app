@@ -2,17 +2,31 @@
 
 {% block content %}
 
-<h1>Baza kontrahentów</h1>
-<br>
-<ul>
-    {% for client in object_list %}
-    Nazwa kontrahenta: {{ client.name }}
-    <a href="{% url 'detail-client' client.pk %}">Szczegóły</a>
+    <h1>Baza kontrahentów</h1>
     <br>
-    {% empty %}
-    Baza klientów jest pusta.
-    {% endfor %}
-</ul>
+    <ul>
+        <table style="border-style: dashed">
+            <tr>
+                <th>Nazwa firmy</th>
+                <th>Adres</th>
+                <th>Osoba do kontaktu</th>
+                <th>Telefon</th>
+                <th>E-mail</th>
+            </tr>
+            {% for client in object_list %}
+                <tr>
+                    <td><a href="{% url 'detail-client' client.pk %}">{{ client.name }}</a></td>
+                    <td>{{ client.address }}</td>
+                    <td>{{ client.contact_person }}</td>
+                    <td>{{ client.phone }}</td>
+                    <td>{{ client.email }}</td>
+                </tr>
+            {% empty %}
+                Baza produktów jest pusta.
+            {% endfor %}
+        </table>
+
+    </ul>
 
 
 {% endblock %}
