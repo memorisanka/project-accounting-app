@@ -5,8 +5,8 @@
     <br>
         <h2>Szczegóły projektu #{{ object.name }}</h2><br>
     </div>
-    <a href="{% url 'update-project' object.pk %}">Update</a>
-    <a href="{% url 'delete-project' object.pk %}">Delete</a>
+    <a href="{% url 'update-project' object.pk %}">Popraw</a>
+    <a href="{% url 'delete-project' object.pk %}">Usuń</a>
     <div>
         <p><b>Nazwa:</b> {{ object.name }}</p>
         <p><b>Klient:</b> <a href="{% url 'detail-client' object.pk %}">{{ object.client }}</a></p>
@@ -21,6 +21,7 @@
             <p>Łączny koszt: {{ summary.total_price }} zł</p>{% endwith %}
 
     </div>
-
+<br>
+    <a href="{% url 'projects-list' %}">Wróć</a>
 
 {% endblock %}

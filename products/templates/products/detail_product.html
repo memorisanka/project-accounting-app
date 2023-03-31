@@ -1,18 +1,19 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<div>
-    <h2>Detail Product #{{ object.id }}</h2><br>
-</div>
-<a href="{% url 'update-product' object.id %}">Update</a>
-<a href="{% url 'delete-product' object.pk %}">Delete</a>
-<div>
-    <p><b>Nazwa:</b> {{ object.name }}</p>
-    <p><b>Jednostka:</b> {{ object.unit }}</p>
-    <p><b>Gatunek stali:</b> {{ object.steel_type }}</p>
-    <p><b>Opis / uwagi:</b> {{ object.description }}</p>
+    <div>
+        <a href="{% url 'update-product' object.id %}">Popraw</a>
+        <a href="{% url 'delete-product' object.pk %}">Usuń</a>
+    </div>
 
-</div>
+    <div>
+        <p><b>Nazwa:</b> {{ object.name }}</p>
+        <p><b>Jednostka:</b> {{ object.unit }}</p>
+        <p><b>Gatunek stali:</b> {{ object.steel_type }}</p>
+        <p><b>Opis / uwagi:</b> {{ object.description }}</p>
 
+    </div>
+<br>
+        <a href="{% url 'products-list' %}">Wróć</a>
 
 {% endblock %}
