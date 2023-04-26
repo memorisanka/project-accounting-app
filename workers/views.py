@@ -14,22 +14,23 @@ class WorkerListView(ListView):
 
 class DetailWorkerView(DetailView):
     model = Worker
-    template_name = "detail_worker.html"
+    template_name = "workers/detail_worker.html"
 
 
 class CreateWorkerView(CreateView):
     model = Worker
     form_class = WorkerForm
-    template_name = "create_worker.html"
+    template_name = "workers/create_worker.html"
 
     def get_success_url(self):
         messages.success(self.request, "Pracownik pomyślnie zapisany.")
         return reverse("detail-worker", args=[self.object.id])
 
+
 class UpdateWorkerView(UpdateView):
     model = Worker
     form_class = WorkerForm
-    template_name = "update_worker.html"
+    template_name = "workers/update_worker.html"
 
     def get_success_url(self):
         messages.success(self.request, "Dane pracownika zostały uaktualnione.")
@@ -38,7 +39,7 @@ class UpdateWorkerView(UpdateView):
 
 class DeleteWorkerView(DeleteView):
     model = Worker
-    template_name = "delete_worker.html"
+    template_name = "workers/delete_worker.html"
 
     def get_success_url(self):
         messages.success(self.request, "Dane pracownika zostały pomyślnie usunięte.")

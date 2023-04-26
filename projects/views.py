@@ -1,14 +1,12 @@
 from django.contrib import messages
-from django.urls import reverse, reverse_lazy
+from django.urls import reverse
 from django.views.generic import ListView
 from django.views.generic import TemplateView
 from django.views.generic.detail import DetailView
-from django.views.generic.edit import CreateView, UpdateView, DeleteView, View
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 
 from projects.models import Project
-from workers.models import Worker
-from .forms import ProjectForm, ProjectForm
+from .forms import ProjectForm
 
 
 class HomeView(TemplateView):
@@ -16,43 +14,16 @@ class HomeView(TemplateView):
 
 
 class ProjectListView(ListView):
-    model = Project
+    queryset = Project.objects.select_related("client")
+    # model = Project
     paginate_by = 12
     ordering = "-date_create"
 
 
-class CRUDView(View):
-    model = None
-    form_class = None
-    template_name = None
-
-
-class OwnCreateView(CRUDView, CreateView):
-    pass
-
-
-# class CreateProjectView(OwnCreateView):
-#     model = Project
-#     form_class = CreateProjectForm
-#     template_name = "create_project.html"
-#     success_message = 'Project successfully saved.'
-#     success_url = reverse('detail-project', args=[Project.pk])
-
-class BaseProjectView:
-    model = Project
-
-    success_message = None
-    success_url = None
-
-    def get_success_url(self):
-        messages.success(self.request, self.success_message)
-        return self.success_url
-
-
-class CreateProjectView(BaseProjectView, CreateView):
+class CreateProjectView(CreateView):
     model = Project
     form_class = ProjectForm
-    template_name = "create_project.html"
+    template_name = "projects/create_project.html"
 
     def get_success_url(self):
         messages.success(self.request, "Pomyślnie zapisano projekt.")
@@ -61,7 +32,7 @@ class CreateProjectView(BaseProjectView, CreateView):
 
 class DetailProjectView(DetailView):
     model = Project
-    template_name = "detail_project.html"
+    template_name = "projects/detail_project.html"
 
     # def get_context_data(self, **kwargs):
     #     data = super().get_context_data(**kwargs)
@@ -72,7 +43,7 @@ class DetailProjectView(DetailView):
 class UpdateProjectView(UpdateView):
     model = Project
     form_class = ProjectForm
-    template_name = "update_project.html"
+    template_name = "projects/update_project.html"
 
     def get_success_url(self):
         messages.success(self.request, "Dane klienta zostały uaktualnione.")
@@ -81,7 +52,7 @@ class UpdateProjectView(UpdateView):
 
 class DeleteProjectView(DeleteView):
     model = Project
-    template_name = "delete_project.html"
+    template_name = "projects/delete_project.html"
 
     def get_success_url(self):
         messages.success(self.request, "Projekt został pomyślnie usunięty.")

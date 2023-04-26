@@ -18,13 +18,17 @@ from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path, include
 
+from projects.views import HomeView
+
 urlpatterns = [
     path("admin/", admin.site.urls),
+    path('', HomeView.as_view(), name='home'),
     path("", include("users.urls")),
-    path("", include("projects.urls")),
+    path("project/", include("projects.urls")),
     path("", include("workers.urls")),
     path("", include("products.urls")),
     path("", include("services.urls")),
     path("", include("clients.urls")),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

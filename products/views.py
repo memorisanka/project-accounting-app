@@ -15,7 +15,7 @@ class ProductListView(ListView):
 class CreateProductView(CreateView):
     model = Product
     form_class = ProductForm
-    template_name = "create_product.html"
+    template_name = "products/create_product.html"
 
     def get_success_url(self):
         messages.success(self.request, "Produkt pomyślnie zapisany.")
@@ -24,13 +24,13 @@ class CreateProductView(CreateView):
 
 class DetailProductView(DetailView):
     model = Product
-    template_name = "detail_product.html"
+    template_name = "products/detail_product.html"
 
 
 class UpdateProductView(UpdateView):
     model = Product
     form_class = ProductForm
-    template_name = "update_product.html"
+    template_name = "products/update_product.html"
 
     def get_success_url(self):
         messages.success(self.request, "Produkt został uaktualniony.")
@@ -39,7 +39,7 @@ class UpdateProductView(UpdateView):
 
 class DeleteProductView(DeleteView):
     model = Product
-    template_name = "delete_product.html"
+    template_name = "products/delete_product.html"
 
     def get_success_url(self):
         messages.success(self.request, "Produkt został pomyślnie usunięty.")

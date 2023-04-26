@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.urls import reverse
 from django.views.generic import CreateView, UpdateView, DetailView, DeleteView, ListView
 
-from .forms import CreateClientForm, UpdateClientForm
+from .forms import ClientForm
 from .models import Client
 
 
@@ -14,8 +14,8 @@ class ClientListView(ListView):
 
 class CreateClientView(CreateView):
     model = Client
-    form_class = CreateClientForm
-    template_name = "create_client.html"
+    form_class = ClientForm
+    template_name = "clients/create_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Klient pomyślnie zapisany.")
@@ -24,13 +24,13 @@ class CreateClientView(CreateView):
 
 class DetailClientView(DetailView):
     model = Client
-    template_name = "detail_client.html"
+    template_name = "clients/detail_client.html"
 
 
 class UpdateClientView(UpdateView):
     model = Client
-    form_class = UpdateClientForm
-    template_name = "update_client.html"
+    form_class = ClientForm
+    template_name = "clients/update_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Dane klienta zostały uaktualnione.")
@@ -39,7 +39,7 @@ class UpdateClientView(UpdateView):
 
 class DeleteClientView(DeleteView):
     model = Client
-    template_name = "delete_client.html"
+    template_name = "clients/delete_client.html"
 
     def get_success_url(self):
         messages.success(self.request, "Klient został pomyślnie usunięty.")

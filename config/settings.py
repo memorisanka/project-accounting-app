@@ -10,8 +10,9 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.1/ref/settings/
 """
 
-from pathlib import Path
 import os
+from pathlib import Path
+
 from dotenv import load_dotenv
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -28,7 +29,6 @@ SECRET_KEY = os.getenv("SECRET_KEY")
 DEBUG = os.getenv("DEBUG")
 
 ALLOWED_HOSTS = []
-
 
 # Application definition
 
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     "services",
     "clients",
     "bootstrap5",
+    "debug_toolbar",
 ]
 
 MIDDLEWARE = [
@@ -58,6 +59,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    "debug_toolbar.middleware.DebugToolbarMiddleware",
 ]
 
 ROOT_URLCONF = "config.urls"
@@ -66,13 +68,15 @@ TEMPLATES = [
     {
         "BACKEND": "django.template.backends.django.DjangoTemplates",
         "APP_DIRS": True,
-        "DIRS": [os.path.join(BASE_DIR, "projects/templates/projects"),
-                 os.path.join(BASE_DIR, "clients/templates/clients"),
-                 os.path.join(BASE_DIR, "workers/templates/workers"),
-                 os.path.join(BASE_DIR, "products/templates/products"),
-                 os.path.join(BASE_DIR, "services/templates/services"),
-                 os.path.join(BASE_DIR, "templates"),
-                 os.path.join(BASE_DIR, "users/templates/users")],
+        "DIRS": [
+            # os.path.join(BASE_DIR, "projects/templates/projects"),
+            # os.path.join(BASE_DIR, "clients/templates/clients"),
+            # os.path.join(BASE_DIR, "workers/templates/workers"),
+            # os.path.join(BASE_DIR, "products/templates/products"),
+            # os.path.join(BASE_DIR, "services/templates/services"),
+            os.path.join(BASE_DIR, "templates"),
+            os.path.join(BASE_DIR, "users/templates/users")
+        ],
         "OPTIONS": {
             "context_processors": [
                 "django.template.context_processors.debug",
@@ -85,7 +89,6 @@ TEMPLATES = [
 ]
 
 WSGI_APPLICATION = "config.wsgi.application"
-
 
 # Database
 # https://docs.djangoproject.com/en/4.1/ref/settings/#databases
@@ -107,7 +110,6 @@ DATABASES = {
     }
 }
 
-
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
 
@@ -125,7 +127,6 @@ AUTH_PASSWORD_VALIDATORS = [
         "NAME": "django.contrib.auth.password_validation.NumericPasswordValidator",
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/4.1/topics/i18n/
@@ -145,7 +146,7 @@ LOGIN_REDIRECT_URL = '/project/list'
 
 
 STATIC_URL = "static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "static")
+STATIC_ROOT = BASE_DIR / "static"
 
 CRISPY_TEMPLATE_PACK = 'uni_form'
 
@@ -159,6 +160,9 @@ CRISPY_TEMPLATE_PACK = 'uni_form'
 
 DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
 
 # EMAIL_BACKEND = "django.core.mail.backends.filebased.EmailBackend"
 

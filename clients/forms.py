@@ -1,7 +1,7 @@
 from django import forms
 from .models import Client
 
-class CreateClientForm(forms.ModelForm):
+class ClientForm(forms.ModelForm):
     class Meta:
         model = Client
         fields = "__all__"
@@ -13,15 +13,3 @@ class CreateClientForm(forms.ModelForm):
             "email": forms.EmailInput(attrs={"class": "form-control"}),
         }
 
-
-class UpdateClientForm(forms.ModelForm):
-    class Meta:
-        model = Client
-        fields = "__all__"
-        attrs = {"class": "form-control"}
-        widgets = {}
-        for field in ['name', "address", "contact_person", "phone", "email"]:
-            if field == "email":
-                widgets[field] = forms.EmailInput(attrs=attrs)
-            else:
-                widgets[field] = forms.TextInput(attrs=attrs)
